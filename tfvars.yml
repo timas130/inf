@@ -1,0 +1,11 @@
+- name: Bootstrap external secrets
+  hosts: localhost
+  vars_prompt:
+    - name: cloudflare_api_token
+      prompt: Enter Cloudflare API Token (sensitive)
+  tasks:
+    - name: Render environment file
+      template:
+        src: ./terraform.tfvars.j2
+        dest: ./terraform.tfvars
+
